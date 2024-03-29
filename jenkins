@@ -3,23 +3,25 @@ pipline{
         tool{
             terraform  'Terraform v1.7.5'
 
+    }
+    stages{
+        stage('git checkout'){
+            steps{
+                git credentialsId: 'githubtoken', url: 'https://github.com/om842000/Terraform-infra.git'
+            }
         }
-        stages('terraform int'){
+        stages('terraform init'){
             steps{
             sh 'terraform init'
             }
         }
-        stage('terraform plan'){
-            steps{
-            sh 'terraform plan'
-            }
-        }
-        stage('terraform apply'){
+        stages('terraform apply'){
             steps{
             sh 'terraform apply -auto approve'
             }
         }
     }
 }
+
 
 
