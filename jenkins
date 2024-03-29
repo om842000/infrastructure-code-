@@ -1,0 +1,25 @@
+pipline{
+    agent any{
+        tool{
+            terraform  'Terraform v1.7.5'
+
+        }
+        stages('terraform int'){
+            steps{
+            sh 'terraform init'
+            }
+        }
+        stage('terraform plan'){
+            steps{
+            sh 'terraform plan'
+            }
+        }
+        stage('terraform apply'){
+            steps{
+            sh 'terraform apply -auto approve'
+            }
+        }
+    }
+}
+
+
