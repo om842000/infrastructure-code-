@@ -1,27 +1,3 @@
-pipline{
-    agent any{
-        tool{
-            terraform  'Terraform v1.7.5'
-
-    }
-    stages{
-        stage('git checkout'){
-            step{
-                git branch: 'main', credentialsId: 'githubtoken', url: 'https://github.com/om842000/infrastructure-code-.git'
-            }
-        }
-        stage('terraform init'){
-            step{
-            sh 'terraform init'
-            }
-        }
-        stage('terraform apply'){
-            step{
-            sh 'terraform apply --auto approve'
-            }
-        }
-    }
-}
-
+#terrafom 
 
 
