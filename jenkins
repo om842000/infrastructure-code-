@@ -6,18 +6,18 @@ pipline{
     }
     stages{
         stage('git checkout'){
-            steps{
+            step{
                 git branch: 'main', credentialsId: 'githubtoken', url: 'https://github.com/om842000/infrastructure-code-.git'
             }
         }
-        stages('terraform init'){
-            steps{
+        stage('terraform init'){
+            step{
             sh 'terraform init'
             }
         }
-        stages('terraform apply'){
-            steps{
-            sh 'terraform apply -auto approve'
+        stage('terraform apply'){
+            step{
+            sh 'terraform apply --auto approve'
             }
         }
     }
